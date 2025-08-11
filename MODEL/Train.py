@@ -9,7 +9,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Hyperparameters
 batch_size=32
-num_epochs = 10
+num_epochs = 30
 learning_rate = 0.001
 
 # Load data
@@ -20,11 +20,15 @@ train_loader, test_loader = get_dataloaders('DATA/archive/training_set/training_
 model = CNNModel().to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+shedule = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
+
+
 
 # Training loop
 for epoch in range(num_epochs):
     model.train()
     running_loss = 0.0
+    
     for images, labels in train_loader:
         images, labels = images.to(device), labels.to(device)
         optimizer.zero_grad()  # Zero the gradients
@@ -36,8 +40,8 @@ for epoch in range(num_epochs):
         running_loss += loss.item()
 
     print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
-
+for epoch in range(num_epochs):
+    shedule.step()
 # Save the model
-torch.save(model.state_dict(), 'cnn_model.pth')
+torch.save(model.state_dict(), 'APP/cnn_model.pth')
 print("Model saved successfully.")
-
