@@ -11,15 +11,14 @@ model.load_state_dict(torch.load('APP/cnn_model.pth', map_location=device))
 model.eval()
 
 # Load test data
-train_loader, test_loader = get_dataloaders('DATA/archive/training_set/training_set', 'DATA/archive/test_set/test_set', batch_size=32)
-
+train_loader, test_loader, val_loader = get_dataloaders('DATA/archive/training_set/training_set', 'DATA/archive/test_set/test_set', batch_size=32)
 # Evaluate the model
 y_pred = []
 y_true = []
 with torch.no_grad():
-    for inputs, labels in test_loader:
-        inputs = inputs.to(device)
-        outputs = model(inputs)
+    for imges, labels in test_loader:
+        imges = imges.to(device)
+        outputs = model(imges)
         predicted = torch.argmax(outputs, 1).cpu().numpy()
         y_pred.extend(predicted)
         y_true.extend(labels.numpy())
