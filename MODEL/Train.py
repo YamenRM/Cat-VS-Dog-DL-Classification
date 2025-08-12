@@ -21,7 +21,7 @@ train_loader, test_loader , val_loader = get_dataloaders('DATA/archive/training_
 model = CNNModel().to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-shedule = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
+
 
 # Initialize variables for early stopping
 patience_counter = 0
@@ -63,7 +63,7 @@ for epoch in range(num_epochs):
         break
 
     
-    shedule.step()  # Update learning rate       
+         
     
 
 
