@@ -5,13 +5,21 @@ import torch
 
 # data loading utilities 
 def get_dataloaders(train_dataset, test_dataset, batch_size=32):
-    Transforms = transforms.Compose([
-        transforms.Resize((128, 128)),
+    train_Transforms = transforms.Compose([
+        transforms.Resize((64, 64)),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomRotation(10),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
         transforms.ToTensor(),
     ])
 
-    full_train_data= datasets.ImageFolder(train_dataset, transform=Transforms)
-    test_data = datasets.ImageFolder(test_dataset, transform=Transforms)
+    test_Transforms = transforms.Compose([
+        transforms.Resize((64, 64)),
+        transforms.ToTensor(),
+    ])
+
+    full_train_data= datasets.ImageFolder(train_dataset, transform=train_Transforms)
+    test_data = datasets.ImageFolder(test_dataset, transform=test_Transforms)
 
 # split the training data into training and validation sets
     train_size = int(0.8 * len(full_train_data))

@@ -10,8 +10,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Hyperparameters
 batch_size=32
-num_epochs = 50
-learning_rate = 0.001
+num_epochs = 25
+learning_rate = 0.002
 
 # Load data
 train_loader, test_loader , val_loader = get_dataloaders('DATA/archive/training_set/training_set' , 'DATA/archive/test_set/test_set' , batch_size=batch_size)
@@ -26,7 +26,7 @@ optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 # Initialize variables for early stopping
 patience_counter = 0
 best_loss = float('inf')
-early_stopping_patience = 5  # Number of epochs to wait before stopping if no improvement
+early_stopping_patience = 3  # Number of epochs to wait before stopping if no improvement
 
 
 # Training loop

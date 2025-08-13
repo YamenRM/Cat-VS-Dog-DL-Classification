@@ -8,20 +8,28 @@ from torch.nn import functional as F
 class CNNModel(nn.Module):
     def __init__(self):
      super().__init__()
+
+     # Define the layers of the CNN
      self.conv1 = nn.Conv2d(3 , 16 , 3)
      self.conv2 = nn.Conv2d(16, 32, 3)
+
+     # Batch normalization layers
      self.bn1 = nn.BatchNorm2d(16)
      self.bn2 = nn.BatchNorm2d(32)
+
+     # Pooling and dropout layers
      self.pool = nn.MaxPool2d(2, 2)
+
+     # Dropout layer
      self.dropout = nn.Dropout(0.5)
 
 # Pass a dummy input to get the flattened size
-     dummy = torch.randn(1, 3, 128, 128)  
+     dummy = torch.randn(1, 3, 64, 64)  
      x = self.pool(F.relu(self.bn1(self.conv1(dummy))))
      x = self.pool(F.relu(self.bn2(self.conv2(x))))
-     flattened_size = x.numel()  # total number of elements
+     flattened_size = x.numel  # total number of elements
         
-     self.fc1 = nn.Linear(flattened_size, 128)
+     self.fc1 = nn.Linear(flattened_size(), 128)
      self.fc2 = nn.Linear(128, 2)
 
 

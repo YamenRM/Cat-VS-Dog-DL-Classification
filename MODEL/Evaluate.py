@@ -12,6 +12,7 @@ model.eval()
 
 # Load test data
 train_loader, test_loader, val_loader = get_dataloaders('DATA/archive/training_set/training_set', 'DATA/archive/test_set/test_set', batch_size=32)
+
 # Evaluate the model
 y_pred = []
 y_true = []
