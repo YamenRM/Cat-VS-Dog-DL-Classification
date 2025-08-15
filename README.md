@@ -43,7 +43,7 @@ The model is built using **PyTorch**, trained on a labeled dataset of cat and do
   ```
 ### 2️⃣ Install dependencies
   ```
-  pip install -r APP/requirements.txt
+  pip install -r Requirements.txt
   ```
 
 
