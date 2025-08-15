@@ -6,7 +6,7 @@ A deep learning-based image classification project built using **PyTorch** and *
 
 ## 🚀 Live Demo
 You can try the live version of the app here:  
-**[Cat vs Dog Classification Web App]()**  
+**[Cat vs Dog Classification Web App](https://yamencatvsdog.streamlit.app/)**  
 
 ---
 
@@ -43,7 +43,7 @@ The model is built using **PyTorch**, trained on a labeled dataset of cat and do
   ```
 ### 2️⃣ Install dependencies
   ```
-  pip install -r Requirements.txt
+  pip install -r requirements.txt
   ```
 
 
