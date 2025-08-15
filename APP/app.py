@@ -1,13 +1,9 @@
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "MODEL")))
-
 import streamlit as st
 from PIL import Image
 import torch
 from torch.nn import functional as F
 from torchvision import transforms , datasets
-from Model_architecture import CNNModel
+from MODEL.Model_architecture import CNNModel
 
 
 # load the device
