@@ -3,7 +3,12 @@ from PIL import Image
 import torch
 from torch.nn import functional as F
 from torchvision import transforms , datasets
-from MODEL.Model_architecture import CNNModel
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "MODEL")))
+
+from Model_architecture import CNNModel
+
 
 
 # load the device
