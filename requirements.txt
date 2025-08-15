@@ -3,5 +3,4 @@ torch
 torchvision
 Pillow
 numpy
-scikitlearn
-PLT
+
